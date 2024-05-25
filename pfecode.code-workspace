@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Project Files"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "pfecode"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			
+			
+			
+
+		]
+	}
+}

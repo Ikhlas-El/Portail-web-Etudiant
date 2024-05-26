@@ -109,8 +109,11 @@ h2{
     font-family: 'lexend', sans-serif;
 }
 
+.navigation .nav-list li a.nav.active {
+    color: #bba460;
+}
 
-.navigation .nav-list li:hover .nav {
+.navigation .nav-list li:hover a.nav {
     color: #bba460;
 }
 
@@ -603,7 +606,121 @@ section.footer{
     }
 }
 
+                /*a propos style*/
+
+#about-container{
+    display: flex;
+    align-items: flex-start; 
+}
 
 
 
+.about-img img{
+    width: 650px; 
+    height: auto; 
+    margin-top: -30px;
+    padding-left: 30px;
+}
+
+#about-container .about-text{
+    flex: 1; 
+    max-width: calc(60% - 200px); 
+    margin-top: 150px;
+    letter-spacing: 0.5px;
+}
+
+.about-text h2 {
+    text-align: center;
+}
+
+.about-text p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.75rem;
+}
+
+
+                /* FAQ CSS*/
+
+.main {
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 100px;
+    border-radius: 5px;
+    margin-top: -100px;
+    margin-bottom: 150px;
+    font-family: 'lexend',sans-serif;
+    font-size: 15px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #363062;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.questions-container {
+    overflow: hidden;
+}
+
+.question-container {
+    border-radius: 5px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    margin: 5px;
+}
+
+.question {
+    background-color: rgb(245, 245, 245);
+    color: #444;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.answer {
+    padding: 10px;
+    display: none;
+    padding-left: 5px;
+}
+
+.question p {
+    font-size: 20px;
+}
+
+.question span{
+    color: #444;
+}
+
+.question-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.show-answer {
+    display: none;
+}
+
+.hide-answer {
+    display: inline-block;
+}
+
+.active .show-answer {
+    display: inline-block;
+}
+
+.active .hide-answer {
+    display: none;
+}
+
+.active .answer {
+    display: block;
+}
 

@@ -62,7 +62,7 @@
                 <!--dropdown menu END-->
                 
                 <li><a class="nav" href="apropos.html">A propos nous</a></li>
-                <li><a class="nav active" href="Contact.html">Contact</a></li>
+                <li><a class="nav active" href="Contact.php">Contact</a></li>
                 <li><a class="nav" href="Seconnecter.html">Se connecter</a></li>
                 <li><a class="nav" href="inscrire.html">S'inscrire</a></li>
                 <li><a class="nav" href="Espétudiant.html">Espace étudiant</a></li>
@@ -74,77 +74,43 @@
     </nav>
 
 
-                <!--image slide -->
+                <!--Form begin-->    
 
-<section id="Accueil">
+<section id="contact">
+<div class="wrapper">
+    <h2>Envoyer un Message</h2>
+    <form action="#">
+    <div class="dbl-field">
+        <div class="field">
+        <input type="text" name="name" placeholder="Nom complet">
+        <i class='fas fa-user'></i>
+        </div>
+        <div class="field">
+        <input type="text" name="email" placeholder="Email">
+        <i class='fas fa-envelope'></i>
+        </div>
+    </div>
+    <div class="dbl-field">
+        <div class="field">
+        <input type="text" name="phone" placeholder="Téléphone">
+        <i class='fas fa-phone-alt'></i>
+        </div>
+    </div>
+    <div class="message">
+        <textarea placeholder="Message" name="message"></textarea>
+        <i class="fas fa-solid fa-comment"></i>
+    </div>
+    <div class="button-area">
+        <button type="submit">Envoyer</button>
+        <span></span>
+    </div>
+    </form>
+</div>
 
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <!--Form End-->  
 
 
 <!--   *** Footer Section Starts ***   -->
@@ -196,12 +162,12 @@
 				<h3>Navigation</h3>
 			</div>
 			<div class="col-contents">
-				<a href="#Accueil">Accueil</a>
-				<a href="#actualite">Actualité</a>
-                <a href="#review">Témoignages</a>
-				<a href="#Cours">Cours</a>
-				<a href="#Examens">Examens</a>
-                <a href="#A propos nous">A propos nous</a>
+				<a href="BTS.HTML#Accueil">Accueil</a>
+				<a href="BTS.HTML#actualite">Actualité</a>
+                <a href="BTS.HTML#review">Témoignages</a>
+				<a href="Contact.php">Contact</a>
+				<a href="apropos.html#FAQ">FAQ</a>
+                <a href="apropos.html">A propos nous</a>
 			</div>
 		</div>
 
@@ -212,3 +178,30 @@
 
 </body>
 </html>
+
+//Contact Form in PHP
+<?php
+  $name = htmlspecialchars($_POST['name']);
+  $email = htmlspecialchars($_POST['email']);
+  $phone = htmlspecialchars($_POST['phone']);
+  $website = htmlspecialchars($_POST['website']);
+  $message = htmlspecialchars($_POST['message']);
+
+  if(!empty($email) && !empty($message)){
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+      $receiver = "ikhlaselissaoui6@gmail.com"; //enter that email address where you want to receive all messages
+      $subject = "From: $name <$email>";
+      $body = "Name: $name\nEmail: $email\nPhone: $phone\nWebsite: $website\n\nMessage:\n$message\n\nRegards,\n$name";
+      $sender = "From: $email";
+      if(mail($receiver, $subject, $body, $sender)){
+         echo "Your message has been sent";
+      }else{
+         echo "Sorry, failed to send your message!";
+      }
+    }else{
+      echo "Enter a valid email address!";
+    }
+  }else{
+    echo "Email and message field is required!";
+  }
+?>

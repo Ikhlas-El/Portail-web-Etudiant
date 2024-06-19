@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="BTS.JS" defer></script>
+    <script src="BTS.JS"></script>
 </head>
 <body>
     <div id="logo">
@@ -37,11 +37,11 @@
 
                 <li class="nav-item nav-item-dropdown">
                     <div class="dropdown">
-                        <a class="nav disabled" href="#" onclick="return false;">Cours</a>
+                        <a class="nav" href="#" onclick="return false;">Cours</a>
                         <i class="fas fa-solid fa-chevron-up dropdown_arrow"></i>
                         <div class="dropdown-content">
                             <a href="CDSI.php">Dsi</a>
-                            <a href="CSRI.php">Sri</a>
+                            <a href="CSri.php">Sri</a>
                         </div>
                     </div>
                     </li>
@@ -50,11 +50,11 @@
 
                 <li class="nav-item nav-item-dropdown">
                 <div class="dropdown">
-                    <a class="nav disabled" href="#" onclick="return false;">Examens</a>
+                    <a class="nav" href="#" onclick="return false;">Examens</a>
                     <i class="fas fa-solid fa-chevron-up dropdown_arrow"></i>
                     <div class="dropdown-content">
-                        <a href="EDSI.php">Dsi</a>
-                        <a href="ESRI.php">Sri</a>
+                        <a href="EDsi.php">Dsi</a>
+                        <a href="ESri.php">Sri</a>
                     </div>
                 </div>
                 </li>
@@ -62,9 +62,9 @@
                 <!--dropdown menu END-->
                 
                 <li><a class="nav" href="apropos.html">A propos nous</a></li>
-                <li><a class="nav active" href="Contact.php">Contact</a></li>
-                <li><a class="nav" href="Seconnecter.html">Se connecter</a></li>
-                <li><a class="nav" href="Espétudiant.html">Espace étudiant</a></li>
+                <li><a class="nav active" href="Contact_us.html">Contact</a></li>
+                <li><a class="nav" href="Connecter.php">Se connecter</a></li>
+                <li><a class="nav" href="espace.php">Espace étudiant</a></li>
             </ul>
             <div class="menu-btn">
                 <span></span>
@@ -72,6 +72,41 @@
         </div>  
     </nav>
 
+    <h2 id="contact_title">Contactez-nous</h2>
+    <section id="contact">
+        <form id="contactForm" action="Contact_us.php" method="POST">
+            <div class="dbl-field">
+                <div class="field">
+                    <input type="text" name="Nom" placeholder="Nom complet" required>
+                    <i class='fas fa-user'></i>
+                </div>
+                <div class="field">
+                    <input type="email" name="Email" placeholder="Email" required>
+                    <i class='fas fa-envelope'></i>
+                </div>
+            </div>
+            <div class="dbl-field">
+                <div class="field">
+                    <input type="text" name="Telephone" placeholder="Téléphone">
+                    <i class='fas fa-phone-alt'></i>
+                </div>
+                <div class="field">
+                    <input type="text" name="Sujet" placeholder="Sujet">
+                    <i class="fas fa-solid fa-tag"></i>
+                </div>
+            </div>
+            <div class="message">
+                <textarea placeholder="Message" name="Message" required></textarea>
+                <i class="fas fa-solid fa-comment"></i>
+            </div>
+            <div class="button-area">
+                <button type="submit">Envoyer</button>
+                <span></span>
+            </div>
+        </form>
+        <div id="statusMessage" class="status-message"></div>
+    </section>
+    
 
 <!--   *** Footer Section Starts ***   -->
 <section class="footer" id="footer">
@@ -83,8 +118,8 @@
                 <div class="col-title">
                     <h3>A propos de nous</h3>
                 </div>
-				<p>BTS Lissane Edinne Ibn Al-Khatib est une plateforme d’apprentissage en ligne pour les étudiants.</p>
-				<p>Il offre un accès à des informations et des ressources aide les étudiants à rester à jour et donne aux nouveaux étudiants un aperçu de l’établissement et du processus d’admission.</p>
+				<p>BTS Lissane Edinne Ibn Al-Khatib est une plateforme d'apprentissage en ligne destinée aux étudiants.</p>
+				<p>Elle leur permet d'accéder à des informations et à des ressources pour rester à jour, tout en offrant aux nouveaux étudiants un aperçu de l'établissement et du processus d'admission.</p>
 			</div>
 		</div>
 
@@ -122,11 +157,11 @@
 				<h3>Navigation</h3>
 			</div>
 			<div class="col-contents">
-				<a href="BTS.HTML#Accueil">Accueil</a>
+				<a href="BTS.HTML">Accueil</a>
 				<a href="BTS.HTML#actualite">Actualité</a>
                 <a href="BTS.HTML#review">Témoignages</a>
-				<a href="Contact.php">Contact</a>
-				<a href="apropos.html#FAQ">FAQ</a>
+				<a href="Contact_us.html">Contact</a>
+				<a href="#FAQ">FAQ</a>
                 <a href="apropos.html">A propos nous</a>
 			</div>
 		</div>
@@ -138,9 +173,3 @@
 
 </body>
 </html>
-
-
-
-
-
-

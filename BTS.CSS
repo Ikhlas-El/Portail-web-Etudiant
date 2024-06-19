@@ -277,6 +277,7 @@ h2{
 #features {
     padding: 15vw 8vw 0 8vw;
     text-align: center;
+    margin-bottom: 60px;
 }
 
 #features .fea-box {
@@ -513,6 +514,7 @@ hr::after {
 
 section.footer{
 	width: 100%;
+    margin-top: -120px;
 	padding: 60px 8% 5px;
 	background-color: #363062;
 }
@@ -647,9 +649,8 @@ section.footer{
     margin: 0 auto;
     padding: 25px;
     background-color: rgb(255, 255, 255);
-    margin-top: 100px;
+    margin-top: -220px;
     border-radius: 5px;
-    margin-top: -100px;
     margin-bottom: 150px;
     font-family: 'lexend',sans-serif;
     font-size: 15px;
@@ -660,7 +661,7 @@ section.footer{
     margin-bottom: 20px;
     color: #363062;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     font-size: 1.8rem;
 }
 
@@ -676,7 +677,7 @@ section.footer{
 
 .question {
     background-color: rgb(245, 245, 245);
-    color: #444;
+    color: #363062;
     padding: 12px;
     cursor: pointer;
     display: flex;
@@ -688,10 +689,11 @@ section.footer{
     padding: 10px;
     display: none;
     padding-left: 5px;
+    color: #444;
 }
 
 .question p {
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .question span{
@@ -723,4 +725,357 @@ section.footer{
 .active .answer {
     display: block;
 }
+
+
+ /* Contact nous style */
+
+
+#contact {
+    width: 715px;
+    height: 530px;
+    background-color: #e4e0e0a6;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+    border: 2px solid #363062;
+    margin-top: 90px;
+    margin: 200px auto; 
+    padding-top: 50px;
+}
+
+#contact_title{
+    margin-top: 100px;
+    margin-bottom: -150px;
+
+}
+
+#contact form {
+    margin: 35px 30px;
+}
+
+#contact form.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+form .dbl-field {
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: space-between;
+}
+
+.dbl-field .field {
+    height: 50px;
+    display: flex;
+    position: relative;
+    width: calc(100% / 2 - 13px);
+}
+
+#contact form i {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    color: #ccc;
+    font-size: 17px;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+#contact form .message i {
+    position: absolute;
+    top: 20%;
+    left: 18px;
+}
+
+form .field input,
+form .message textarea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 18px 0 48px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #363062;
+    background-color: #fff;
+}
+
+.field input::placeholder,
+.message textarea::placeholder {
+    color: #ccc;
+}
+
+.field input:focus,
+.message textarea:focus {
+    padding-left: 47px;
+    border: 2px solid #363062;
+    background-color: #fff; 
+}
+
+.field input:focus ~ i,
+.message textarea:focus ~ i {
+    color: #363062;
+}
+
+form .message {
+    position: relative;
+}
+
+form .message i {
+    top: 30px;
+    font-size: 20px;
+}
+
+form .message textarea {
+    min-height: 130px;
+    max-height: 230px;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 15px 20px 0 48px;
+    background-color: #fff; /* Set the background color for textarea */
+}
+
+form .message textarea::-webkit-scrollbar {
+    width: 0px;
+}
+
+.message textarea:focus {
+    padding-top: 14px;
+}
+
+form .button-area {
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.button-area button {
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 13px 25px;
+    background: #363062;
+    transition: background 0.3s ease;
+}
+
+.button-area button:hover {
+    background-color: #363062d8;
+}
+
+.button-area span {
+    font-size: 17px;
+    margin-left: 30px;
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .wrapper header {
+        text-align: center;
+    }
+
+    .wrapper form {
+        margin: 35px 20px;
+    }
+
+    form .dbl-field {
+        flex-direction: column;
+        margin-bottom: 0px;
+    }
+
+    form .dbl-field .field {
+        width: 100%;
+        height: 45px;
+        margin-bottom: 20px;
+    }
+
+    form .message textarea {
+        resize: none;
+    }
+
+    form .button-area {
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .button-area button {
+        width: 100%;
+        padding: 11px 0;
+        font-size: 16px;
+    }
+
+    .button-area span {
+        margin: 20px 0 0;
+        text-align: center;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+
+
+ /* espace etudiant style  */
+
+
+
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #363062;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; 
+}
+
+.logout {
+    margin-top: auto; 
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.quit-button {
+    background: #bba460;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.quit-button i {
+    margin-right: 10px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.header {
+    background: #363062;
+    padding: 20px;
+    margin-top: -15px;
+    padding-left: 35px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+}
+
+.header h3 {
+    color: white;
+    font-family: 'Lexend', sans-serif;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.header h3 span {
+    font-size: 2.8rem;
+    color: #bba460;
+    padding-top: 8px;
+}
+
+#username {
+    margin-left: 10px;
+}
+
+.header p {
+    color: #e5e5e5d5;
+    font-size: 0.9rem;
+    font-family: 'Lexend', sans-serif;
+}
+
+.filters {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px; 
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.filter-group label {
+    margin-right: 10px; 
+    color: #444;
+}
+
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #888888; 
+    background: white;
+    width: 150px;
+    color: #444;
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background-color: white; 
+    cursor: pointer; 
+}
+
+
+
+select:hover, select:focus {
+    border-color: #bba460; 
+}
+
+select option {
+    background-color: white; 
+    color: #444;
+}
+
+
+#notesTable {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+#notesTable th, #notesTable td {
+    border: 1px solid grey;
+    padding: 8px;
+}
+
+#notesTable th {
+    background-color: #363062;
+    text-align: center; 
+}
+
+
 

@@ -40,7 +40,7 @@
                         <a class="nav active disabled" href="#" onclick="return false;">Cours</a>
                         <i class="fas fa-solid fa-chevron-up dropdown_arrow"></i>
                         <div class="dropdown-content">
-                            <a href="CDsi.php">Dsi</a>
+                            <a href="CDSI.php">Dsi</a>
                             <a href="CSri.php">Sri</a>
                         </div>
                     </div>

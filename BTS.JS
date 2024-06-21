@@ -135,78 +135,78 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+ // espce etudiant login code 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const espaceEtudiantLink = document.getElementById('espaceEtudiantLink');
+    if (espaceEtudiantLink) {
+        espaceEtudiantLink.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                alert('Vous devez vous connecter pour accéder à espace étudiants.');
+                return;
+            }
+
+            // If logged in, check if user is a student of BTS Laayoune
+            const email = localStorage.getItem('email');
+            if (!email) {
+                alert('Email not found in local storage.');
+                return;
+            }
+
+            fetch('/pfecode/pfecode/login_espace.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.text())  // Changed to .text() to inspect the actual response
+            .then(text => {
+                console.log('Response Text:', text); // Log the raw response
+                try {
+                    const data = JSON.parse(text); // Parse the JSON manually
+                    if (data.status === 'success') {
+                        window.location.href = 'espace.php'; // Redirect to espace.php
+                    } else {
+                        alert('Désolé, cet espace est réservé aux étudiants du BTS Laayoune.');
+                    }
+                } catch (error) {
+                    console.error('Parsing error:', error);
+                    alert('Une erreur s\'est produite. Veuillez réessayer.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Une erreur s\'est produite. Veuillez réessayer.');
+            });
+        });
+    }
+});
 
 
 
 
+// Wait for DOM content to be fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+  // Select necessary DOM elements
+  const navBar = document.querySelector(".custom-nav");
+  const menuBtns = document.querySelectorAll(".menu-icon");
+  const overlay = document.querySelector(".custom-overlay");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const yearSelect = document.getElementById('year');
-  const semesterSelect = document.getElementById('semester');
-
-  yearSelect.addEventListener('change', fetchNotes);
-  semesterSelect.addEventListener('change', fetchNotes);
-
-  function fetchNotes() {
-      const year = yearSelect.value;
-      const semester = semesterSelect.value;
-
-      fetch(`get_notes.php?year=${year}&semester=${semester}`)
-          .then(response => response.json())
-          .then(data => populateTable(data))
-          .catch(error => console.error('Error:', error));
-  }
-
-  function populateTable(data) {
-      const tableBody = document.querySelector('#notesTable tbody');
-      tableBody.innerHTML = '';
-
-      data.forEach(note => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-              <td>${note.module}</td>
-              <td>${note.control1}</td>
-              <td>${note.control2}</td>
-              <td>${note.control3}</td>
-          `;
-          tableBody.appendChild(row);
+  // Add click event listeners to each menu icon
+  menuBtns.forEach((menuBtn) => {
+      menuBtn.addEventListener("click", () => {
+          // Toggle the 'open' class on navBar to show/hide the sidebar
+          navBar.classList.toggle("open");
       });
-  }
+  });
 
-  // Initial fetch
-  fetchNotes();
+  // Adding click event listener to the overlay to close the sidebar
+  overlay.addEventListener("click", () => {
+      navBar.classList.remove("open");
+  });
 });

@@ -63,15 +63,15 @@
                 
                 <li><a class="nav" href="apropos.html">A propos nous</a></li>
                 <li><a class="nav" href="Contact_us.html">Contact</a></li>
+                <li><a class="nav" href="Inscrire.php">S'inscrire</a></li>
                 <li><a class="nav" href="Connecter.php">Se connecter</a></li>
-                <li><a class="nav" href="espace.php">Espace étudiant</a></li>
+                <li><a class="nav" id="espaceEtudiantLink" href="#">Espace étudiant</a></li>
             </ul>
             <div class="menu-btn">
                 <span></span>
             </div>
         </div>  
     </nav>
-
 
                 <!--image slide -->
 

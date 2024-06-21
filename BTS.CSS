@@ -918,9 +918,109 @@ input:-webkit-autofill {
 
 
 
+/* inscrire form style */
+
+
+.con{
+    margin-top: 80px;
+    margin-bottom: -180px;
+}
+.insc{
+    margin-top: 115px;
+    background: #eee;
+}
+.form-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+    padding-bottom: 60px;
+    background: #eee;
+}
+
+
+.form-container form.inscrire_form{
+    padding:20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    background: #fff;
+    text-align: center;
+    width: 500px;
+    font-family: 'Lexend', sans-serif;
+ }
+ 
+ .form-container form.inscrire_form h2{
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    font-family: 'Lexend', sans-serif;
+    color: #444;
+ }
+ 
+ .form-container form.inscrire_form input,
+ .form-container form.inscrire_form select{
+    width: 100%;
+    padding:10px 15px;
+    font-size: 1rem;
+    margin:8px 0;
+    background: #eee;
+    border-radius: 5px;
+ }
+
+ 
+ .form-container form.inscrire_form .form-btn{
+    background: #363062;
+    color: white;
+    text-transform: capitalize;
+    font-size: 20px;
+    cursor: pointer;
+ }
+ 
+ .form-container form.inscrire_form .form-btn:hover{
+    background: #363062db;
+    color:#fff;
+ }
+ 
+ .form-container form.inscrire_form p{
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #444;
+ }
+ 
+ .form-container form.inscrire_form p a{
+    color: #bba460;
+ }
+ 
+ .form-container form.inscrire_form .error-msg{
+    margin:10px 0;
+    display: block;
+    background: #cc0000;
+    color:#fff;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding:10px;
+    font-family: 'Lexend', sans-serif;
+ }
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #eee inset;
+    -webkit-text-fill-color: #444;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 1000px #eee inset; 
+    -webkit-text-fill-color: #444; 
+    transition: background-color 5000s ease-in-out 0s;
+    font-size: 1.5rem;
+}
+
+
+
  /* espace etudiant style  */
-
-
 
 .dashboard {
     display: flex;
@@ -957,7 +1057,7 @@ input:-webkit-autofill {
 }
 
 .quit-button {
-    background: #bba460;
+    background: #cfb463;
     padding: 10px 20px;
     border-radius: 5px;
     display: flex;
@@ -1000,7 +1100,7 @@ input:-webkit-autofill {
 
 .header h3 span {
     font-size: 2.8rem;
-    color: #bba460;
+    color: #d4b968;
     padding-top: 8px;
 }
 
@@ -1079,3 +1179,380 @@ select option {
 
 
 
+
+
+
+
+
+
+
+/* Amin page style  */
+.custom-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #363062;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-nav .header-logo {
+    display: flex;
+    align-items: center;
+    margin: 0 24px;
+  }
+  
+  .header-logo .menu-icon {
+    color: white;
+    font-size: 24px;
+    margin-right: 14px;
+    cursor: pointer;
+  }
+  
+  .header-logo .logo-name {
+    color: white;
+    font-family: 'Lexend', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  
+  .custom-nav .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 260px;
+    padding: 20px 0;
+    background-color: #363062;
+    color: white;
+    box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+  }
+  
+  .custom-nav.open .sidebar {
+    left: 0;
+  }
+  
+  .sidebar .sidebar-content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 16px;
+  }
+  
+  .sidebar-content .list {
+    list-style: none;
+  }
+  
+  .lists .nav-link {
+    display: flex;
+    align-items: center;
+    font-family: 'Lexend', sans-serif;
+    margin: 8px 0;
+    padding: 14px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  
+  .lists .nav-link:hover {
+    background-color: white;
+  }
+  
+  .nav-link .icon {
+    margin-right: 14px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .nav-link .link {
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+  }
+  
+  .lists .nav-link:hover .icon,
+  .lists .nav-link:hover .link {
+    color: #363062;
+  }
+  
+  .custom-overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 1000vh;
+    width: 200%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .custom-nav.open ~ .custom-overlay {
+    opacity: 1;
+    left: 260px;
+    pointer-events: auto;
+  }
+  
+
+  .lists .nav-link:hover,
+.lists .nav-link.active {
+  background-color: white;
+}
+
+.lists .nav-link:hover .icon,
+.lists .nav-link.active .icon {
+  color: #363062; /* Change the color as needed */
+}
+
+.lists .nav-link:hover .link,
+.lists .nav-link.active .link {
+  color: #363062; /* Change the color as needed */
+}
+
+
+
+
+
+
+/* etudiants  table in the admin style*/
+
+#etudiants {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#etudiants h2 {
+    text-align: center;
+    color: #363062;
+    margin-bottom: 20px;
+}
+
+.btn-etd-ajouter {
+    display: inline-block;
+    margin-left: 942px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #444;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-etd-ajouter:hover {
+    background-color: #444444d4;
+}
+
+.table-etd {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-etd thead tr {
+    background-color: #f2f2f2;
+}
+
+.table-etd th, .table-etd td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table-etd tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-etd tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-etd-mod, .btn-etd-sup {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-etd-mod {
+    background-color: #444;
+    color: white;
+}
+
+.btn-etd-mod:hover {
+    background-color: #444444d4;
+}
+
+.btn-etd-sup {
+    background-color: #cc0000;
+    color: white;
+}
+
+.btn-etd-sup:hover {
+    background-color: #cc0000cc;
+}
+
+
+/* Form Container */
+.etd-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+.etd-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Rows */
+.row-etd {
+    margin-bottom: 15px;
+}
+
+.col-etd-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.col-etd-2 {
+    width: 100%;
+}
+
+.col-etd-value {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+.btn-etd-ajout {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-etd-submit1, .btn-etd-cancel {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-etd-cancel {
+    background-color: #dc3545;
+}
+
+.btn-etd-submit1:hover, .btn-etd-cancel:hover {
+    background-color: #0056b3;
+}
+
+.btn-etd-cancel:hover {
+    background-color: #c82333;
+}
+
+
+
+
+/* Ajouter etudiant */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    position: fixed;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-dismissible .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    color: #000;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.alert-dismissible .btn-close:hover {
+    opacity: 1;
+}
+
+.etd-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn-etd-ajout {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-etd-submit1, .btn-etd-cancel {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-etd-cancel {
+    background-color: #dc3545;
+}
+
+.btn-etd-submit1:hover, .btn-etd-cancel:hover {
+    background-color: #0056b3;
+}
+
+.btn-etd-cancel:hover {
+    background-color: #c82333;
+}

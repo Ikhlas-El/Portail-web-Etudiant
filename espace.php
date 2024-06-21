@@ -1,3 +1,8 @@
+<?php
+@include 'Config.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +32,12 @@
             <ul class="sidebar-menu">
             </ul>
             <div class="logout">
-                <a href="BTS.HTML" class="quit-button"><i class="fas fa-sign-out-alt"></i> Quitter</a>
+                <a href="logout_admin.php" class="quit-button"><i class="fas fa-sign-out-alt"></i> Quitter</a>
             </div>
         </div>
         <div class="content">
             <div class="header">
-                <h3>Bienvenue, <span id="username">Ikhlas Elissaoui</span></h3>
+            <h3>Bienvenue, <span id="username">Ikhlas Elissaoui</span></h3>
             </div>
             <div class="filters">
                 <div class="filter-group">

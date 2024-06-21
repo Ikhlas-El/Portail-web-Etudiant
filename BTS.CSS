@@ -331,52 +331,48 @@ h2{
     color: #444;
 }
 
+/* actualite style code */
 
-                /* Actualité code  */
-
-#actualite{
+#actualite {
     padding: 30vh 10vh 0 8vh;
     text-align: center;
 }
 
-#actualite .actualite-box{
+#actualite .actualite-box {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-    grid-gap:1rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 1.5rem;
     margin-top: 50px;
-
 }
 
-#actualite .actualites{
-    text-align: start;
-    background-color: white;
-    height: 100%;
+#actualite .actualite {
+    text-align: start; /* Assuming you want the text aligned to the start inside each .actualite div */
+    background-color: white; /* This applies to the background of each .actualite div */
 }
 
-#actualite .actualites img{
-    width: 100%;
-    height: 70%;
-    background-size: cover;
-    background-position: center center;
-    transition: box-shadow 0.3s ease; 
+#actualite .actualite img {
+    width: 90%;
+    height: auto; /* Use 'auto' to maintain aspect ratio */
+    max-height: 100%; /* Adjust max-height as needed */
+    object-fit: cover; /* Ensures the image covers the entire container */
+    transition: box-shadow 0.3s ease;
     cursor: pointer;
-
 }
 
-#actualite .actualites img:hover { 
-    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6); 
-} 
+#actualite .actualite img:hover {
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6);
+}
 
-#actualite h2{
+#actualite h2 {
     font-size: 2rem;
 }
 
-
-.actualite-box .actualites {
+/* Show only the first 3 .actualite elements initially */
+.actualite-box .actualite {
     display: none;
 }
 
-.actualite-box .actualites:nth-child(-n+3) {
+.actualite-box .actualite:nth-child(-n+3) {
     display: block;
 }
 
@@ -923,7 +919,7 @@ input:-webkit-autofill {
 
 .con{
     margin-top: 80px;
-    margin-bottom: -180px;
+    margin-bottom: 10px;
 }
 .insc{
     margin-top: 115px;
@@ -1333,7 +1329,7 @@ select option {
 
 .btn-etd-ajouter {
     display: inline-block;
-    margin-left: 942px;
+    margin-left: 1045px;
     margin-bottom: 20px;
     padding: 10px 20px;
     background-color: #444;
@@ -1372,20 +1368,20 @@ select option {
 
 .btn-etd-mod, .btn-etd-sup {
     display: inline-block;
-    margin-right: 5px;
-    padding: 5px 10px;
+    margin-right: 2px;
+    padding: 4px 8px;
     text-decoration: none;
     border-radius: 3px;
     transition: background-color 0.3s ease;
 }
 
 .btn-etd-mod {
-    background-color: #444;
+    background-color: #363062;
     color: white;
 }
 
 .btn-etd-mod:hover {
-    background-color: #444444d4;
+    background-color: #403974;
 }
 
 .btn-etd-sup {
@@ -1437,122 +1433,245 @@ select option {
     border-radius: 5px;
 }
 
-/* Button Styles */
-.btn-etd-ajout {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.btn-etd-submit1, .btn-etd-cancel {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-etd-cancel {
-    background-color: #dc3545;
-}
-
-.btn-etd-submit1:hover, .btn-etd-cancel:hover {
-    background-color: #0056b3;
-}
-
-.btn-etd-cancel:hover {
-    background-color: #c82333;
-}
 
 
 
 
 /* Ajouter etudiant */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
+
+/* Ensure the body and html take the full height and remove any margin */
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; 
+}
+
+/* Make sure the container takes up the full viewport height */
+.etd-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Style the form */
+form {
+    width: 100%;
+    max-width: 600px;
+    padding-top: 80px;
+}
+
+/* Style each row of the form to ensure alignment */
+.row-etd {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.row-etd .rad{
+    margin-left: 20px;
+    color: #444;
+}
+
+
+/* Style the labels */
+.col-etd-label {
+    width: 20%;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Style the input containers */
+.col-etd-2 {
+    width: 70%;
+}
+
+/* Style the inputs */
+.col-etd-value {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    position: relative;
+}
+
+/* Style the button container */
+.btn-etd-ajout {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Style the buttons */
+.btn-etd-submit1, .btn-etd-cancel {
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #363062;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 1px; /* Add margin between buttons */
+}
+
+.btn-etd-submit1{
+    margin-right: -170px;
+}
+
+.btn-etd-cancel {
+    background-color: #cc0000;
+    margin-left: -170px;
+}
+
+/* Style the alert messages */
+.alert {
+    position: fixed;
+    top: 70px; /* Adjusted to be below the navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    z-index: 1000;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .alert-warning {
-    color: #856404;
-    background-color: #fff3cd;
-    border-color: #ffeeba;
-    position: fixed;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 .alert-success {
-    color: #155724;
     background-color: #d4edda;
-    border-color: #c3e6cb;
+    color: #155724;
+    border: 1px solid #c3e6cb;
 }
 
-.alert-dismissible .btn-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.btn-close {
     background: none;
     border: none;
     font-size: 20px;
     line-height: 1;
-    color: #000;
-    opacity: 0.5;
     cursor: pointer;
-}
-
-.alert-dismissible .btn-close:hover {
-    opacity: 1;
-}
-
-.etd-container {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.btn-etd-ajout {
-    text-align: center;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.btn-etd-submit1, .btn-etd-cancel {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-etd-cancel {
-    background-color: #dc3545;
+    color: inherit;
 }
 
 .btn-etd-submit1:hover, .btn-etd-cancel:hover {
-    background-color: #0056b3;
+    background-color: #363062ea;
 }
 
 .btn-etd-cancel:hover {
-    background-color: #c82333;
+    background-color: #e11010;
+}
+
+
+/* Actualité Admin Section */
+#actui_admin {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 50px;
+}
+
+#actui_admin h2 {
+    text-align: center;
+    color: #363062;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+#actui_admin form {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#actui_admin form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #444;
+}
+
+#actui_admin form input[type="text"],
+#actui_admin form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#actui_admin form button {
+    padding: 10px 20px;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#actui_admin form button:hover {
+    background-color: #dd2020;
+}
+
+/* Table Styles */
+#actui_admin table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#actui_admin thead tr {
+    background-color: #f2f2f2;
+}
+
+#actui_admin th, #actui_admin td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#actui_admin tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#actui_admin tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+#actui_admin td img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#actui_admin td a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #444;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#actui_admin td a:hover {
+    background-color: #444444d4;
 }

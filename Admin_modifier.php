@@ -6,6 +6,8 @@ $nom = "";
 $prenom = "";
 $email = "";
 $CNE = "";
+$debut = "";
+$fin = "";
 $filiere = "";
 
 $errorMessage = "";
@@ -28,49 +30,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         exit;
     }
 
-    // Populate form fields with current values
+    // Assign fetched values to variables
+    $id = $row["id"];
     $nom = $row["nom"];
     $prenom = $row["prenom"];
     $email = $row["email"];
     $CNE = $row["CNE"];
+    $debut = $row["annee_debut"];
+    $fin = $row["annee_fin"];
     $filiere = $row["filiereId"]; // Assuming this is the foreign key ID
-} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+}
+elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Retrieve and sanitize form data
     $id = $_POST["id"];
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $email = $_POST["email"];
     $CNE = $_POST["CNE"];
+    $debut = $_POST["debut"];
+    $fin = $_POST["fin"];
     $filiere = $_POST["filiere"];
 
-    do {
-        if (empty($nom) || empty($prenom) || empty($email) || empty($CNE) || empty($filiere)) {
-            $errorMessage = "Remplissez tous les champs.";
-            break;
-        }
+    // Perform validation if needed
 
-        // Validate if $filiere exists in the filiere table
-        $validateSql = "SELECT id FROM filiere WHERE id='$filiere'";
-        $validateResult = $conn->query($validateSql);
+    // Update query
+    $sql = "UPDATE etudiant SET nom='$nom', prenom='$prenom', email='$email', CNE='$CNE', annee_debut='$debut', annee_fin='$fin', filiereId='$filiere' WHERE id=$id";
 
-        if ($validateResult->num_rows == 0) {
-            $errorMessage = "La filière sélectionnée n'existe pas.";
-            break;
-        }
-
-        // Update student record
-        $sql = "UPDATE etudiant SET nom='$nom', prenom='$prenom', email='$email', CNE='$CNE', filiereId='$filiere' WHERE id='$id'";
-        
-        if ($conn->query($sql) === TRUE) {
-            $successMessage = "Étudiant mis à jour avec succès";
-        } else {
-            $errorMessage = "Erreur lors de la mise à jour de l'étudiant : " . $conn->error;
-        }
-
-    } while (false);
+    if ($conn->query($sql) === TRUE) {
+        $successMessage = "Modification effectuée avec succès!";
+        // Redirect after successful update
+        header("location: Admin.php");
+        exit;
+    } else {
+        $errorMessage = "Erreur lors de la modification: " . $conn->error;
+    }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -143,8 +138,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </nav>
 <section class="custom-overlay"></section>
 <div class="etd-container">
-    <h2>Nouveau étudiant</h2>
-
     <?php 
     if (!empty($errorMessage)) {
         echo "
@@ -183,6 +176,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             </div>
         </div>
         <div class="row-etd">
+            <label class="col-etd-label">Début d'étude</label>
+            <div class="col-etd-2">
+                <input type="text" class="col-etd-value" name="debut" value="<?php echo $debut ?>">
+            </div>
+        </div>
+        <div class="row-etd">
+            <label class="col-etd-label">Fin d'étude</label>
+            <div class="col-etd-2">
+                <input type="text" class="col-etd-value" name="fin" value="<?php echo $fin ?>">
+            </div>
+        </div>
+        <div class="row-etd">
             <label class="col-etd-label">Filière</label>
             <div class="col-etd-2">
                 <label><input type="radio" name="filiere" value="1" <?php echo ($filiere == '1') ? 'checked' : ''; ?>> DSI</label>
@@ -207,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         <div class="row-etd">
             <div class="btn-etd-ajout">
-                <button type="submit" class="btn-etd-submit1">Ajouter</button>
+                <button type="submit" class="btn-etd-submit1">Modifier</button>
             </div>
             <div class="btn-etd-ajout">
                 <a class="btn-etd-cancel" href="Admin.php" role="button">Annuler</a>

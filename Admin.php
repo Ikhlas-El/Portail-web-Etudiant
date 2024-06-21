@@ -102,6 +102,8 @@
                 <th>Nom complet</th>
                 <th>Email</th>
                 <th>CNE</th>
+                <th>Début d'étude </th>
+                <th>Fin d'étude</th>
                 <th>Filière</th>
                 <th>Actions</th>
             </tr>
@@ -110,17 +112,21 @@
         <?php 
             // SQL query to select required columns, excluding motDePasse, and concatenating nom and prenom as nomComplet
             $sql = "SELECT e.id, 
-                          CONCAT(e.nom, ' ', e.prenom) AS nomComplet, 
-                          e.email, 
-                          e.cne, 
-                          f.nom AS filiereNom 
-                    FROM etudiant e
-                    JOIN filiere f ON e.filiereId = f.id";
-            $result = $conn->query($sql);
+            CONCAT(e.nom, ' ', e.prenom) AS nomComplet, 
+            e.email, 
+            e.cne, 
+            e.annee_debut,
+            e.annee_fin,
+            f.nom AS filiereNom 
+    FROM etudiant e
+    JOIN filiere f ON e.filiereId = f.id";
 
-            if (!$result) {
-                die("Invalid query: " . $conn->error);
-            }
+$result = $conn->query($sql);
+
+if (!$result) {
+die("Invalid query: " . $conn->error);
+}
+
 
             // Fetch and display each row of the result set
             while ($row = $result->fetch_assoc()) {
@@ -130,6 +136,8 @@
                         <td>{$row['nomComplet']}</td>
                         <td>{$row['email']}</td>
                         <td>{$row['cne']}</td>
+                        <td>{$row['annee_debut']}</td>
+                        <td>{$row['annee_fin']}</td>
                         <td>{$row['filiereNom']}</td>
                         <td>
                             <a class='btn-etd-mod' href='Admin_modifier.php?id={$row['id']}'>Modifier</a>
@@ -142,7 +150,6 @@
         </tbody>
     </table>
 </section>
-
 
 </body>
 </html>

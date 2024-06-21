@@ -47,29 +47,33 @@ function menuItemClicked(){
 // ajouter les actualites par 3
 
 document.addEventListener('DOMContentLoaded', function() {
-  const button = document.querySelector('.button-1');
-  if (button) {
-    button.addEventListener('click', toggleMoreContent);
-  } else {
-    console.error("not found!");
+    const button = document.querySelector('.button-1');
+    if (button) {
+      button.addEventListener('click', toggleMoreContent);
+    } else {
+      console.error("Button not found!");
+    }
+  });
+  
+  let revealedImages = 3;
+  
+  function toggleMoreContent() {
+      const actualites = document.querySelectorAll('.actualite');
+      
+      // Reveal the next set of three hidden images
+      for (let i = revealedImages; i < revealedImages + 3 && i < actualites.length; i++) {
+          actualites[i].style.display = 'block';
+      }
+      
+      // Update the count of revealed images
+      revealedImages += 3;
+      
+      // Hide the button if all images are revealed
+      if (revealedImages >= actualites.length) {
+          document.querySelector('.button-1').style.display = 'none';
+      }
   }
-});
-
-let revealedImages = 0;
-
-function toggleMoreContent() {
-    const actualites = document.querySelectorAll('.actualites');
-
-    revealedImages += 3;
-
-    for (let i = 0; i < revealedImages && i < actualites.length; i++) {
-        actualites[i].style.display = 'block';
-    }
-
-    if (revealedImages >= actualites.length) {
-        document.querySelector('.button-1').style.display = 'none';
-    }
-}
+  
 
 
 // FAQ part for a propos nous

@@ -1,3 +1,10 @@
+<?php
+
+@include 'Config.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,62 +82,35 @@
 
                 <!--image slide -->
 
-<section id="Accueil">
-
+                <section id="actualite">
+    <h2>Actualités</h2>
+    <br>
+    <hr>
+    <div class="actualite-box">
+        <?php
+        include 'Config.php';
+        $result = $conn->query("SELECT * FROM actualite");
+        $count = 0;
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="actualite" style="display: ' . ($count < 3 ? 'block' : 'none') . ';">';
+            if ($row['pdf_path']) {
+                echo '<a href="'.$row['pdf_path'].'" target="_blank">';
+                echo '<img src="'.$row['image_path'].'" alt="'.$row['title'].'">';
+                echo '</a>';
+            } else {
+                echo '<img src="'.$row['image_path'].'" alt="'.$row['title'].'">';
+            }
+            echo '</div>';
+            $count++;
+        }
+        $conn->close();
+        ?>
+    </div>
+    <br>
+    <button class="button-1" role="button">Voir plus</button>
+    <br>
+    <hr>
 </section>
-
-                <!--actualite start  -->  
-
-    <section id="actualite">
-        <h2>Actualité</h2>
-        <br>
-        <hr>
-        <div class="actualite-box">
-            <div class="actualites">
-                <img src="images/1.png">
-            </div>
-
-            <div class="actualites">
-                <a href="pdfs/horaire de Ramaden.pdf" target="_blank">
-                <img src="images/2.png">
-            </a>
-            </div>
-
-            <div class="actualites">
-                <img src="images/3.png">
-            </div>
-
-            <div class="actualites">
-                <img src="images/4.png">
-            </div>
-
-            <div class="actualites">
-                <img src="images/5.png">
-            </div>
-
-            <div class="actualites">
-                <img src="images/6.png">
-            </div>
-
-            <div class="actualites">
-                <img src="images/7.png">
-            </div>
-
-            <div class="actualites">
-                <img src="images/8.png">
-            </div>
-
-            <div class="actualites">
-                <img src="images/9.png">
-            </div>
-        </div>
-        <br>
-        <button class="button-1" role="button"  onclick="toggleMoreContent()">Voir plus</button>
-        <br>
-        <hr>
-    </section>
-
-
 
 
 

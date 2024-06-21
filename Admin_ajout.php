@@ -5,6 +5,8 @@ $nom = "";
 $prenom = "";
 $email = "";
 $CNE = "";
+$debut = "";
+$fin = "";
 $filiere = "";
 
 $errorMessage = "";
@@ -15,26 +17,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prenom = $_POST["prenom"];
     $email = $_POST["email"];
     $CNE = $_POST["CNE"];
+    $debut = $_POST["debut"];
+    $fin = $_POST["fin"];
     $filiere = $_POST["filiere"];
 
     do {
-        if (empty($nom) || empty($prenom) || empty($email) || empty($CNE) || empty($filiere)) {
+        if (empty($nom) || empty($prenom) || empty($email) || empty($CNE) || empty($debut) || empty($fin) || empty($filiere) ) {
             $errorMessage = "Remplissez tous les champs.";
             break;
         }
 
-        $sql = "INSERT INTO etudiant (nom, prenom, email, CNE, filiereId) VALUES ('$nom', '$prenom', '$email', '$CNE', '$filiere')";
-        $conn->query($sql);
+        // Validate if $filiere exists in the filiere table
+        $validateSql = "SELECT id FROM filiere WHERE id='$filiere'";
+        $validateResult = $conn->query($validateSql);
 
-        $nom = "";
-        $prenom = "";
-        $email = "";
-        $CNE = "";
-        $filiere = "";
+        if ($validateResult->num_rows == 0) {
+            $errorMessage = "La filière sélectionnée n'existe pas.";
+            break;
+        }
 
-        $successMessage = "Étudiant ajouté avec succès";
-        header("location: Admin.php");
-        exit;
+        $sql = "INSERT INTO etudiant (nom, prenom, email, CNE, annee_debut, annee_fin, filiereId) VALUES ('$nom', '$prenom', '$email', '$CNE', '$debut', '$fin', '$filiere')";
+        if ($conn->query($sql) === TRUE) {
+            $successMessage = "Étudiant ajouté avec succès";
+            header("location: Admin.php");
+            exit;
+        } else {
+            $errorMessage = "Erreur lors de l'ajout de l'étudiant : " . $conn->error;
+        }
 
     } while (false);
 }
@@ -111,8 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </nav>
 <section class="custom-overlay"></section>
 <div class="etd-container">
-    <h2>Nouveau étudiant</h2>
-
     <?php 
     if (!empty($errorMessage)) {
         echo "
@@ -128,32 +135,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="row-etd">
             <label class="col-etd-label">Nom</label>
             <div class="col-etd-2">
-                <input type="text" class="col-etd-value" name="nom" value="<?php echo $nom ?>">
+                <input type="text" class="col-etd-value" name="nom" value="<?php echo htmlspecialchars($nom) ?>">
             </div>
         </div>
         <div class="row-etd">
             <label class="col-etd-label">Prenom</label>
             <div class="col-etd-2">
-                <input type="text" class="col-etd-value" name="prenom" value="<?php echo $prenom ?>">
+                <input type="text" class="col-etd-value" name="prenom" value="<?php echo htmlspecialchars($prenom) ?>">
             </div>
         </div>
         <div class="row-etd">
             <label class="col-etd-label">Email</label>
             <div class="col-etd-2">
-                <input type="email" class="col-etd-value" name="email" value="<?php echo $email ?>">
+                <input type="email" class="col-etd-value" name="email" value="<?php echo htmlspecialchars($email) ?>">
             </div>
         </div>
         <div class="row-etd">
             <label class="col-etd-label">CNE</label>
             <div class="col-etd-2">
-                <input type="text" class="col-etd-value" name="CNE" value="<?php echo $CNE ?>">
+                <input type="text" class="col-etd-value" name="CNE" value="<?php echo htmlspecialchars($CNE) ?>">
+            </div>
+        </div>
+        <div class="row-etd">
+            <label class="col-etd-label">Début d'étude</label>
+            <div class="col-etd-2">
+                <input type="text" class="col-etd-value" name="debut" value="<?php echo htmlspecialchars($debut) ?>">
+            </div>
+        </div>
+        <div class="row-etd">
+            <label class="col-etd-label">Fin d'étude</label>
+            <div class="col-etd-2">
+                <input type="text" class="col-etd-value" name="fin" value="<?php echo htmlspecialchars($fin) ?>">
             </div>
         </div>
         <div class="row-etd">
             <label class="col-etd-label">Filière</label>
             <div class="col-etd-2">
-                <label><input type="radio" name="filiere" value="1" <?php echo ($filiere == '1') ? 'checked' : ''; ?>> DSI</label>
-                <label><input type="radio" name="filiere" value="2" <?php echo ($filiere == '2') ? 'checked' : ''; ?>> SRI</label>
+                <label class="rad"><input type="radio" name="filiere" value="1" <?php echo ($filiere == '1') ? 'checked' : ''; ?>> DSI</label>
+                <label class="rad"><input type="radio" name="filiere" value="2" <?php echo ($filiere == '2') ? 'checked' : ''; ?>> SRI</label>
             </div>
         </div>
 

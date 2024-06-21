@@ -1,15 +1,14 @@
 <?php
-@include 'Config.php';
+include 'Config.php';
+$id = $_GET['id'];
 
-
-if( isset($_GET["id"])){
-    $id = $_GET["id"];
-
-    $sql = "DELETE FROM etudiant WHERE id='$id'";
-    $conn->query($sql);
+$sql = "DELETE FROM actualite WHERE id=$id";
+if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . $conn->error;
 }
 
-
-header("location: Admin.php");
-exit;
+$conn->close();
+header('Location: actualite.php');
 ?>

@@ -1,6 +1,5 @@
 <?php
 @include 'Config.php';
-
 session_start();
 
 if (isset($_POST['submit'])) {
@@ -29,6 +28,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['user_name'] = $row_user['nom'];
             $_SESSION['isLoggedIn'] = true;
             $_SESSION['email'] = $row_user['email'];
+            $_SESSION['student_id'] = $row_user['id'];
             echo "<script>
                     localStorage.setItem('isLoggedIn', 'true');
                     localStorage.setItem('email', '{$row_user['email']}');

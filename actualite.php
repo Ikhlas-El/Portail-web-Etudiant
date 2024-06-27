@@ -125,8 +125,8 @@ while ($row = $result->fetch_assoc()) {
     }
     echo "</td>
             <td>
-                <a href='actualite_modifier.php?id={$row['id']}'>Modifier</a>
-                <a href='actualite_supprimer.php?id={$row['id']}'>Supprimer</a>
+                <a  href='actualite_modifier.php?id={$row['id']}'>Modifier</a>
+                <a  href='actualite_supprimer.php?id={$row['id']}'>Supprimer</a>
             </td>
           </tr>";
 }

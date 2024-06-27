@@ -735,7 +735,8 @@ section.footer{
     border: 2px solid #363062;
     margin-top: 90px;
     margin: 200px auto; 
-    padding-top: 50px;
+    padding-top: 0px;
+    padding-left: 25px;
 }
 
 #contact_title{
@@ -746,6 +747,7 @@ section.footer{
 
 #contact form {
     margin: 35px 30px;
+    padding-top: 25px;
 }
 
 #contact form.disabled {
@@ -1437,9 +1439,9 @@ select option {
 
 
 
-/* Ajouter etudiant */
+/* Ajouter etudiant part style */
 
-/* Ensure the body and html take the full height and remove any margin */
+
 body {
     height: 100%;
     margin: 0;
@@ -1447,7 +1449,7 @@ body {
     overflow: hidden; 
 }
 
-/* Make sure the container takes up the full viewport height */
+
 .etd-container {
     display: flex;
     flex-direction: column;
@@ -1458,14 +1460,13 @@ body {
     box-sizing: border-box;
 }
 
-/* Style the form */
 form {
     width: 100%;
     max-width: 600px;
     padding-top: 80px;
 }
 
-/* Style each row of the form to ensure alignment */
+
 .row-etd {
     display: flex;
     align-items: center;
@@ -1478,7 +1479,7 @@ form {
 }
 
 
-/* Style the labels */
+
 .col-etd-label {
     width: 20%;
     text-align: right;
@@ -1487,12 +1488,12 @@ form {
     color: #444;
 }
 
-/* Style the input containers */
+
 .col-etd-2 {
     width: 70%;
 }
 
-/* Style the inputs */
+
 .col-etd-value {
     width: 100%;
     padding: 10px;
@@ -1500,7 +1501,7 @@ form {
     border-radius: 4px;
 }
 
-/* Style the button container */
+
 .btn-etd-ajout {
     display: flex;
     justify-content: center;
@@ -1508,7 +1509,7 @@ form {
     margin-top: 5px;
 }
 
-/* Style the buttons */
+
 .btn-etd-submit1, .btn-etd-cancel {
     padding: 10px 20px;
     text-align: center;
@@ -1519,7 +1520,7 @@ form {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    margin: 0 1px; /* Add margin between buttons */
+    margin: 0 1px; 
 }
 
 .btn-etd-submit1{
@@ -1531,10 +1532,9 @@ form {
     margin-left: -170px;
 }
 
-/* Style the alert messages */
 .alert {
     position: fixed;
-    top: 70px; /* Adjusted to be below the navbar */
+    top: 70px; 
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -1576,6 +1576,9 @@ form {
 }
 
 
+
+
+
 /* Actualité Admin Section */
 #actui_admin {
     padding: 20px;
@@ -1589,7 +1592,7 @@ form {
     margin-bottom: 20px;
 }
 
-/* Form Styles */
+
 #actui_admin form {
     max-width: 600px;
     margin: 0 auto 20px auto;
@@ -1617,7 +1620,7 @@ form {
 
 #actui_admin form button {
     padding: 10px 20px;
-    background-color: #cc0000;
+    background-color: #444;
     color: white;
     border: none;
     border-radius: 5px;
@@ -1626,10 +1629,10 @@ form {
 }
 
 #actui_admin form button:hover {
-    background-color: #dd2020;
+    background-color: #333;
 }
 
-/* Table Styles */
+
 #actui_admin table {
     width: 100%;
     border-collapse: collapse;
@@ -1661,11 +1664,12 @@ form {
     margin: 0 auto;
 }
 
+
 #actui_admin td a {
     display: inline-block;
     margin-right: 10px;
     padding: 5px 10px;
-    background-color: #444;
+    background-color: #363062;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -1673,5 +1677,139 @@ form {
 }
 
 #actui_admin td a:hover {
-    background-color: #444444d4;
+    background-color: #403974;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* cours style */
+
+.chapitres {
+    display: none;
+}
+
+
+#cours-dsi1 {
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-family: 'lexend', sans-serif;
+    font-size: 15px;
+}
+
+#cours-dsi2{
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-bottom: 300px;
+    font-family: 'lexend', sans-serif;
+    font-size: 15px;
+}
+
+#cours-sri2{
+    margin-bottom: 300px;
+}
+
+.box h2 {
+    font-size: 24px;
+    margin-top: 100px;
+    color: #363062;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.box h2 .cours2{
+    font-size: 24px;
+    margin-top: 80px;
+    color: #363062;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+
+
+.cours2-container {
+    overflow: hidden;
+    margin-top: 50px;
+    width: 90%;
+    margin-left: 60px;
+    margin-bottom: 280px;
+}
+
+.cours-container {
+    overflow: hidden;
+    margin-top: 50px;
+    width: 90%;
+    margin-left: 60px;
+
+}
+
+.cour-container {
+    border-radius: 5px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    margin: 5px;
+}
+
+.cour {
+    background-color: rgb(245, 245, 245);
+    color: #363062;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chapitres {
+    padding: 10px;
+    display: none;
+    padding-left: 5px;
+    color: #444;
+}
+
+.cour p {
+    font-size: 17px;
+}
+
+.cour span {
+    color: #444;
+}
+
+.question-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.show-answer {
+    display: none;
+}
+
+.hide-answer {
+    display: inline-block;
+}
+
+.active .show-answer {
+    display: inline-block;
+}
+
+.active .hide-answer {
+    display: none;
+}
+
+.active .chapitres {
+    display: block;
 }

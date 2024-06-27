@@ -2,6 +2,8 @@
 
 @include 'Config.php';
 
+session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +112,6 @@
         </thead>
         <tbody>
         <?php 
-            // SQL query to select required columns, excluding motDePasse, and concatenating nom and prenom as nomComplet
             $sql = "SELECT e.id, 
             CONCAT(e.nom, ' ', e.prenom) AS nomComplet, 
             e.email, 

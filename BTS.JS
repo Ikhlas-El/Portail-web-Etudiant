@@ -67,8 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Update the count of revealed images
       revealedImages += 3;
-      
-      // Hide the button if all images are revealed
+
       if (revealedImages >= actualites.length) {
           document.querySelector('.button-1').style.display = 'none';
       }
@@ -93,6 +92,73 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+// cours part of the FAQ
+function toggleChapitres(moduleId) {
+    const chapitres = document.getElementById('chapitres-' + moduleId);
+    if (chapitres.style.display === 'block') {
+        chapitres.style.display = 'none';
+    } else {
+        chapitres.style.display = 'block';
+    }
+}
+
+
+
+// cours admin js part
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Récupérer et remplir les modules
+    fetch('get_modules.php')
+        .then(response => response.json())
+        .then(data => {
+            const moduleSelects = document.querySelectorAll('#module_id');
+            moduleSelects.forEach(select => {
+                select.innerHTML = ''; // Effacer les options existantes
+                data.forEach(module => {
+                    const option = document.createElement('option');
+                    option.value = module.id;
+                    option.textContent = module.title;
+                    select.appendChild(option);
+                });
+            });
+        })
+        .catch(error => console.error('Erreur lors de la récupération des modules :', error));
+
+    // Ajouter un écouteur d'événements pour ajouter un module
+    const addModuleForm = document.getElementById('add-module-form');
+    addModuleForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(addModuleForm);
+        fetch('admin_ajouter_module.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert('Module ajouté avec succès !');
+            location.reload(); // Recharger la page pour voir les changements
+        })
+        .catch(error => console.error('Erreur lors de l\'ajout du module :', error));
+    });
+
+    // Ajouter un écouteur d'événements pour ajouter un chapitre
+    const addChapterForm = document.getElementById('add-chapter-form');
+    addChapterForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(addChapterForm);
+        fetch('admin_ajouter_chapitre.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert('Chapitre ajouté avec succès !');
+            location.reload(); // Recharger la page pour voir les changements
+        })
+        .catch(error => console.error('Erreur lors de l\'ajout du chapitre :', error));
+    });
+});
 
 
 // Contact us 
@@ -194,7 +260,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Wait for DOM content to be fully loaded
+//the admin sidebar load icons
+
+
 document.addEventListener("DOMContentLoaded", function() {
   // Select necessary DOM elements
   const navBar = document.querySelector(".custom-nav");
@@ -214,3 +282,18 @@ document.addEventListener("DOMContentLoaded", function() {
       navBar.classList.remove("open");
   });
 });
+
+
+
+
+
+
+
+
+
+window.addEventListener('beforeunload', function(event) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'logout_admin.php', false);  // Synchronous request to ensure it completes before the page closes
+    xhr.send();
+});
+

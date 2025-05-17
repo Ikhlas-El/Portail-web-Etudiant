@@ -6,7 +6,6 @@ session_start();
 // Initialize variables
 $isLoggedIn = false;
 $nom_complet = 'Nom Complet Non Disponible';
-$notes = []; // Initialize notes as empty array
 
 // Check if student is logged in
 if (isset($_SESSION['student_id'])) {
@@ -19,91 +18,103 @@ if (isset($_SESSION['student_id'])) {
     if ($result_student && mysqli_num_rows($result_student) > 0) {
         $row_student = mysqli_fetch_assoc($result_student);
         $nom_complet = $row_student['nom'] . ' ' . $row_student['prenom'];
+        $isLoggedIn = true;
     }
-
-    $isLoggedIn = true;
 
     // Fetch the years and semesters for the logged-in student
     $years = mysqli_query($conn, "SELECT * FROM annee");
     $semesters = mysqli_query($conn, "SELECT * FROM semestre");
 }
+
+if (!$isLoggedIn) {
+    echo "<script>
+        alert('Vous devez vous connecter pour accéder à l\'espace étudiants.');
+        window.location.href = 'Connecter.php';
+    </script>";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BTS Lissane Edinne Ibn Al-khatib Laayoune</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" 
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="BTS.CSS">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="BTS.JS"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
             const nomComplet = <?php echo json_encode($nom_complet); ?>;
+            document.getElementById('username').textContent = nomComplet;
 
-            if (!isLoggedIn) {
-                alert('Vous devez vous connecter pour accéder à l\'espace étudiants.');
-                window.location.href = 'Connecter.php'; // Redirect to login page if not logged in
+            const searchButton = document.getElementById('searchButton');
+            const yearInput = document.querySelector('select[name="year"]');
+            const semesterInput = document.querySelector('select[name="semester"]');
+
+            if (searchButton && yearInput && semesterInput) {
+                searchButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    searchNotes(yearInput.value, semesterInput.value);
+                });
             } else {
-                document.getElementById('username').textContent = nomComplet;
-
-                const espaceEtudiantLink = document.getElementById('espaceEtudiantLink');
-                if (espaceEtudiantLink) {
-                    espaceEtudiantLink.addEventListener('click', function(event) {
-                        event.preventDefault();
-                        const isLoggedInNow = <?php echo json_encode($isLoggedIn); ?>;
-                        if (!isLoggedInNow) {
-                            alert('Vous devez vous connecter pour accéder à l\'espace étudiants.');
-                            window.location.href = 'Connecter.php'; // Redirect to login page if not logged in
-                        } else {
-                            const email = localStorage.getItem('email');
-                            if (!email) {
-                                alert('Email not found in local storage.');
-                                return;
-                            }
-                            fetch('/pfecode/pfecode/login_espace.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({ email: email })
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.status === 'success') {
-                                    window.location.href = 'espace.php'; // Redirect to espace.php if access granted
-                                } else {
-                                    alert('Désolé, cet espace est réservé aux étudiants du BTS Laayoune.');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                alert('Une erreur s\'est produite. Veuillez réessayer.');
-                            });
-                        }
-                    });
-                }
+                console.error('Search button, year input, or semester input not found');
             }
         });
+
+        function searchNotes(year, semester) {
+            fetch('search_notes.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ year, semester })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error('Error:', data.error);
+                } else {
+                    populateTable(data);
+                }
+            })
+            .catch(error => console.error('Fetch error:', error));
+        }
+
+        function populateTable(data) {
+            const table = document.getElementById('notesTable');
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = '';
+
+            data.forEach(note => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${note.module}</td>
+                    <td>${note.premierControle || '-'}</td>
+                    <td>${note.deuxiemeControle || '-'}</td>
+                    <td>${note.troisiemeControle || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
     </script>
 </head>
+
 <body>
-<div class="dashboard">
+    <div class="dashboard">
         <div class="sidebar">
             <ul class="sidebar-menu"></ul>
             <div class="logout">
@@ -179,40 +190,43 @@ if (isset($_SESSION['student_id'])) {
 
         function searchNotes(year, semester) {
             fetch('search_notes.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ year, semester })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    console.error('Error:', data.error);
-                } else {
-                    populateTable(data);
-                }
-            })
-            .catch(error => console.error('Fetch error:', error));
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        year,
+                        semester
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Error:', data.error);
+                    } else {
+                        populateTable(data);
+                    }
+                })
+                .catch(error => console.error('Fetch error:', error));
         }
 
         function populateTable(data) {
-    const table = document.getElementById('notesTable');
-    const tbody = table.querySelector('tbody');
-    tbody.innerHTML = '';
+            const table = document.getElementById('notesTable');
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = '';
 
-    data.forEach(note => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
+            data.forEach(note => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
             <td>${note.module}</td>
             <td>${note.premierControle || '-'}</td>
             <td>${note.deuxiemeControle || '-'}</td>
             <td>${note.troisiemeControle || '-'}</td>
         `;
-        tbody.appendChild(row);
-    });
-}
-
+                tbody.appendChild(row);
+            });
+        }
     </script>
 </body>
+
 </html>

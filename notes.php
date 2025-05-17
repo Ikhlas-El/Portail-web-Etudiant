@@ -113,6 +113,7 @@ if (isset($_POST['filiere_id']) && isset($_POST['year'])) {
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="BTS.JS"></script>
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="images/favicon.png">
 
 
     <style>

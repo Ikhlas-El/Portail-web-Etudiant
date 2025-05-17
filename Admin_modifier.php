@@ -77,6 +77,7 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="BTS.CSS?v=1.0">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"/>
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <script src="BTS.JS"></script>
 </head>
 <body>

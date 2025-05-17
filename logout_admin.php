@@ -16,8 +16,12 @@ if (ini_get("session.use_cookies")) {
 
 // Destroy the session
 session_destroy();
+echo "Session destroyed";
+
 
 // Redirect to login page
 header("Location: BTS.php");
 exit();
+
+
 ?>

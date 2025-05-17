@@ -16,6 +16,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['admin_name'] = $row_admin['nom'];
         $_SESSION['isLoggedIn'] = true;
         $_SESSION['email'] = $row_admin['email'];
+        $_SESSION['user_type'] = 'admin'; 
         header('Location: Admin.php');
         exit();
     } else {
@@ -28,6 +29,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['user_name'] = $row_user['nom'];
             $_SESSION['isLoggedIn'] = true;
             $_SESSION['email'] = $row_user['email'];
+            $_SESSION['user_type'] = 'etudiant';
             $_SESSION['student_id'] = $row_user['id'];
             echo "<script>
                     localStorage.setItem('isLoggedIn', 'true');
@@ -44,6 +46,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['user_name'] = $row_user['nom'];
                 $_SESSION['isLoggedIn'] = true;
                 $_SESSION['email'] = $row_user['email'];
+                $_SESSION['user_type'] = 'utilisateur'; 
                 echo "<script>
                         localStorage.setItem('isLoggedIn', 'true');
                         localStorage.setItem('email', '{$row_user['email']}');
@@ -79,7 +82,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="BTS.CSS?v=1.0">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="BTS.JS"></script>
 </head>

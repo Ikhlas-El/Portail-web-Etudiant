@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="BTS.CSS?v=1.0">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"/>
     <script src="BTS.JS"></script>
+    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 <nav class="custom-nav">

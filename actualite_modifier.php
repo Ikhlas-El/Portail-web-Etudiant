@@ -31,6 +31,7 @@ $row = $result->fetch_assoc();
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"/>
+      <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 <nav class="custom-nav">

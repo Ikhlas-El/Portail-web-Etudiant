@@ -27,6 +27,7 @@
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"/>
+      <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 <nav class="custom-nav">
@@ -90,7 +91,7 @@
 <section id="actui_admin">
     <h2>Ajouter actualité</h2>
     <form class="form_actua" action="actualite_ajout.php" method="post" enctype="multipart/form-data">
-        <label for="title">Title:</label>
+        <label for="title">Titre:</label>
         <input type="text" name="title" id="title" required>
         <label for="image">Image:</label>
         <input type="file" name="image" id="image" required>

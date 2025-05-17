@@ -334,7 +334,7 @@ h2{
 /* actualite style code */
 
 #actualite {
-    padding: 30vh 10vh 0 8vh;
+    padding: 20vh 8vh 0 8vh;
     text-align: center;
 }
 
@@ -351,7 +351,7 @@ h2{
 }
 
 #actualite .actualite img {
-    width: 90%;
+    width: 100%;
     height: auto; /* Use 'auto' to maintain aspect ratio */
     max-height: 100%; /* Adjust max-height as needed */
     object-fit: cover; /* Ensures the image covers the entire container */
@@ -725,24 +725,22 @@ section.footer{
 
  /* Contact nous style */
 
-
-#contact {
+ #contact {
     width: 715px;
     height: 530px;
-    background-color: #e4e0e0a6;
+    background-color: #eee;
     border-radius: 5px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
     border: 2px solid #363062;
     margin-top: 90px;
-    margin: 200px auto; 
+    margin: 200px auto;
     padding-top: 0px;
     padding-left: 25px;
 }
 
-#contact_title{
+#contact_title {
     margin-top: 100px;
     margin-bottom: -150px;
-
 }
 
 #contact form {
@@ -805,7 +803,7 @@ form .message textarea {
 .message textarea:focus {
     padding-left: 47px;
     border: 2px solid #363062;
-    background-color: #fff; 
+    background-color: #fff;
 }
 
 .field input:focus ~ i,
@@ -912,8 +910,18 @@ form .button-area {
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
+    font-size: 16px !important; /* Prevent font size change on autofill */
+    background-color: #fff !important; /* Ensure background color is consistent */
+    color: #000; /* Ensure text color is consistent */
 }
 
+.field input:hover {
+    background-color: #fff; /* Ensure background color is consistent on hover */
+}
+
+.field input:focus {
+    background-color: #fff; /* Ensure background color is consistent on focus */
+}
 
 
 /* inscrire form style */
@@ -946,9 +954,9 @@ input:-webkit-autofill {
     text-align: center;
     width: 500px;
     font-family: 'Lexend', sans-serif;
- }
- 
- .form-container form.inscrire_form h2{
+}
+
+.form-container form.inscrire_form h2{
     text-transform: uppercase;
     margin-bottom: 30px;
     padding-top: 10px;

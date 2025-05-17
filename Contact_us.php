@@ -26,14 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'ikhlaselissaoui6@gmail.com'; // Your Gmail address
-                $mail->Password = 'zyngtojzuyltgnmp'; // Your Gmail password or app-specific password
+                $mail->Username = 'ikhlaselissaoui6@gmail.com'; 
+                $mail->Password = 'zyngtojzuyltgnmp'; 
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
                 // Email content
                 $mail->setFrom($email, $name);
-                $mail->addAddress('ikhlaselissaoui6@gmail.com'); // Replace with your recipient email address
+                $mail->addAddress('ikhlaselissaoui6@gmail.com'); 
                 $mail->isHTML(true);
                 $mail->Subject = "From: $name <$email>";
                 $mail->Body = "Nom complet: $name<br>Email: $email<br>Téléphone: $phone<br>Sujet: $website<br><br>Message:<br>$message<br><br>Cordialement,<br>$name";

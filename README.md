@@ -23,8 +23,6 @@ Ce portail représente une ressource incontournable pour les étudiants, leur of
 
 ## 🖼️ Captures d’écran
 
-Ajoutez ici des captures d’écran du portail :
-
 ![Page d’accueil](images/accueil.png)
 ![Interface étudiant](images/FQ.png)
 
